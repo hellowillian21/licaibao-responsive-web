@@ -1,10 +1,13 @@
 {
-  "name": "licaibao_responsiveweb",
+  "name": "licaibao_responsive-web",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "http://hellowillian21.github.io/licaibao_responsive-web",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx gulp",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "author": "hellowillian21",
   "license": "ISC",

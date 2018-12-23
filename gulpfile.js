@@ -7,8 +7,8 @@ var uglify = require('gulp-uglify'); //压缩js的插件
 var csso = require('gulp-csso');  //压缩css的插件
 
 gulp.task('default',function(){
-    var jsFilter = filter('**/*.js',{restore:true});
-    var cssFilter = filter('**/*.css',{restore:true});
+    var jsFilter = filter('*/*.js',{restore:true});
+    var cssFilter = filter('*/*.css',{restore:true});
     var indexHtmlFilter = filter(['**/*','!**/index.html'],{restore:true});
 
     return gulp.src('src/index.html')
@@ -16,10 +16,9 @@ gulp.task('default',function(){
         .pipe(jsFilter)
         .pipe(uglify())
         .pipe(jsFilter.restore)
-        //此处压缩css报错未完善 
-        // .pipe(cssFilter)
-        // .pipe(csso())
-        // .pipe(cssFilter.restore)
+        .pipe(cssFilter)
+        .pipe(csso())
+        .pipe(cssFilter.restore)
         .pipe(indexHtmlFilter)
         .pipe(rev())
         .pipe(indexHtmlFilter.restore)
